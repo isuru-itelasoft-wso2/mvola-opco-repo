@@ -43,3 +43,4 @@ data:
       url: https://localhost:8253/mvola
   endpointImplementationType: ENDPOINT
   websubSubscriptionConfiguration: null
+  businessInformation : []
