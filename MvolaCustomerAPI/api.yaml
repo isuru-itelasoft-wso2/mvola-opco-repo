@@ -44,7 +44,8 @@ data:
   additionalPropertiesMap: {}
   accessControl: NONE
   accessControlRoles: []
-  businessInformation: {}
+  businessInformation:
+    technicalOwner: Isuru Wijesundara
   corsConfiguration:
     corsConfigurationEnabled: false
     accessControlAllowOrigins:
