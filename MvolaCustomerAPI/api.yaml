@@ -2,10 +2,10 @@ type: api
 version: v4.7.0
 data:
   id: beca6ed1-7441-499a-9b31-a3dcaee830af
-  name: MvolaCustomerAPI
-  displayName: MvolaCustomerAPI
+  name: MVOLA-Customer-API
+  displayName: MVOLA-Customer-API
   context: /mvola
-  version: v1.0.0
+  version: 1.0.0
   provider: admin
   lifeCycleStatus: PUBLISHED
   responseCachingEnabled: false
@@ -45,6 +45,7 @@ data:
   accessControl: NONE
   accessControlRoles: []
   businessInformation:
+    technicalOwner: Isuru Wijesundara
   corsConfiguration:
     corsConfigurationEnabled: false
     accessControlAllowOrigins:
