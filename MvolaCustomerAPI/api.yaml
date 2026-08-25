@@ -5,7 +5,7 @@ data:
   name: MvolaCustomerAPI
   displayName: MvolaCustomerAPI
   context: /mvola
-  version: 1.0.0
+  version: v1.0.0
   provider: admin
   lifeCycleStatus: PUBLISHED
   responseCachingEnabled: false
