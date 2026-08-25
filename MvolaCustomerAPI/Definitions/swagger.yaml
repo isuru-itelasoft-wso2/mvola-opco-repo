@@ -1,13 +1,15 @@
-openapi: 3.0.1
+components:
+  securitySchemes:
+    default:
+      flows:
+        implicit:
+          authorizationUrl: https://test.com
+          scopes: {}
+      type: oauth2
 info:
   title: MvolaCustomerAPI
   version: 1.0.0
-servers:
- -
-  url: /
-security:
- -
-  default: []
+openapi: 3.0.1
 paths:
   /customers:
     get:
@@ -16,59 +18,54 @@ paths:
         "200":
           description: ok
       security:
-       -
-        default: []
+      - default: []
       x-auth-type: Application & Application User
       x-throttling-tier: Unlimited
       x-wso2-application-security:
-        security-types:
-         - oauth2
         optional: false
-components:
-  securitySchemes:
-    default:
-      type: oauth2
-      flows:
-        implicit:
-          authorizationUrl: https://test.com
-          scopes: {}
+        security-types:
+        - oauth2
+security:
+- default: []
+servers:
+- url: /
 x-wso2-api-key-header: ApiKey
+x-wso2-application-security:
+  optional: false
+  security-types:
+  - oauth2
 x-wso2-auth-header: Authorization
+x-wso2-basePath: /mvola/1.0.0
 x-wso2-cors:
-  corsConfigurationEnabled: false
-  accessControlAllowOrigins:
-   - '*'
   accessControlAllowCredentials: false
   accessControlAllowHeaders:
-   - authorization
-   - Access-Control-Allow-Origin
-   - Content-Type
-   - SOAPAction
-   - apikey
-   - Internal-Key
+  - authorization
+  - Access-Control-Allow-Origin
+  - Content-Type
+  - SOAPAction
+  - apikey
+  - Internal-Key
   accessControlAllowMethods:
-   - GET
-   - PUT
-   - POST
-   - DELETE
-   - PATCH
-   - OPTIONS
+  - GET
+  - PUT
+  - POST
+  - DELETE
+  - PATCH
+  - OPTIONS
+  accessControlAllowOrigins:
+  - '*'
+  corsConfigurationEnabled: false
 x-wso2-production-endpoints:
-  urls:
-   - https://localhost:8253/mvola
   type: http
-x-wso2-sandbox-endpoints:
   urls:
-   - https://localhost:8253/mvola
-  type: http
-x-wso2-basePath: /mvola/1.0.0
-x-wso2-transports:
- - http
- - https
-x-wso2-application-security:
-  security-types:
-   - oauth2
-  optional: false
+  - https://localhost:8253/mvola
 x-wso2-response-cache:
-  enabled: false
   cacheTimeoutInSeconds: 300
+  enabled: false
+x-wso2-sandbox-endpoints:
+  type: http
+  urls:
+  - https://localhost:8253/mvola
+x-wso2-transports:
+- http
+- https
