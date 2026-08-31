@@ -5,7 +5,7 @@ data:
   context: /mvola
   version: 1.0.0
   provider: admin
-  lifeCycleStatus: PUBLISHED
+  lifeCycleStatus: CREATED
   isDefaultVersion: true
   isRevision: false
   revisionId: 0
@@ -16,15 +16,7 @@ data:
   policies:
   - Unlimited
   authorizationHeader: Authorization
-  securityScheme:
-  - oauth_basic_auth_api_key_mandatory
-  - oauth2
   visibility: PUBLIC
-  businessInformation:
-    businessOwner: Isuru W
-    businessOwnerEmail: isuru@mvola.com
-    technicalOwner: Isuru W
-    technicalOwnerEmail: isuru@mvola.com
   corsConfiguration:
     corsConfigurationEnabled: true
     accessControlAllowOrigins:
@@ -50,8 +42,4 @@ data:
     sandbox_endpoints:
       url: https://localhost:8253/mvola
   endpointImplementationType: ENDPOINT
-  advertiseInfo:
-    advertised: false
-    apiOwner: admin
-    vendor: WSO2
   websubSubscriptionConfiguration: null
