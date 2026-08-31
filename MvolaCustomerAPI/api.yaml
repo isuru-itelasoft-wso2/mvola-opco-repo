@@ -17,8 +17,8 @@ data:
   - Unlimited
   authorizationHeader: Authorization
   securityScheme:
-   - oauth_basic_auth_api_key_mandatory
-   - oauth2
+  - oauth_basic_auth_api_key_mandatory
+  - oauth2
   visibility: PUBLIC
   businessInformation:
     businessOwner: Isuru W
