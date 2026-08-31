@@ -16,7 +16,15 @@ data:
   policies:
   - Unlimited
   authorizationHeader: Authorization
+  securityScheme:
+   - oauth_basic_auth_api_key_mandatory
+   - oauth2
   visibility: PUBLIC
+  businessInformation:
+    businessOwner: Isuru W
+    businessOwnerEmail: isuru@mvola.com
+    technicalOwner: Isuru W
+    technicalOwnerEmail: isuru@mvola.com
   corsConfiguration:
     corsConfigurationEnabled: true
     accessControlAllowOrigins:
