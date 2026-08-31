@@ -24,6 +24,10 @@ data:
     businessOwnerEmail: isuru@mvola.com
     technicalOwner: Isuru W
     technicalOwnerEmail: isuru@mvola.com
+  advertiseInfo:
+    advertised: false
+    apiOwner: admin
+    vendor: WSO2
   visibility: PUBLIC
   corsConfiguration:
     corsConfigurationEnabled: true
