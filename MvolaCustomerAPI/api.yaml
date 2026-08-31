@@ -50,4 +50,8 @@ data:
     sandbox_endpoints:
       url: https://localhost:8253/mvola
   endpointImplementationType: ENDPOINT
+  advertiseInfo:
+    advertised: false
+    apiOwner: admin
+    vendor: WSO2
   websubSubscriptionConfiguration: null
