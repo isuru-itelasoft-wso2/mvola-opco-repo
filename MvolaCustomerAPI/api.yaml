@@ -5,7 +5,7 @@ data:
   context: /mvola
   version: 1.0.0
   provider: admin
-  lifeCycleStatus: CREATED
+  lifeCycleStatus: PUBLISHED
   isDefaultVersion: true
   isRevision: false
   revisionId: 0
