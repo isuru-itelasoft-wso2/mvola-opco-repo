@@ -512,6 +512,7 @@ pipeline {
      * POST BUILD
      * ================================================================
      */
+
     post {
 
         success {
@@ -523,18 +524,23 @@ pipeline {
 
             echo ""
             echo "APIs processed:"
-            echo "${API_PROJECTS}"
+
+            script {
+                if (env.API_PROJECTS) {
+                    echo "${env.API_PROJECTS}"
+                } else {
+                    echo "None"
+                }
+            }
 
             echo ""
             echo "Governance: PASSED"
             echo "Deployment: COMPLETED"
-
             echo ""
             echo "Only changed APIs were deployed."
 
             echo "========================================"
         }
-
 
         failure {
 
@@ -545,7 +551,14 @@ pipeline {
 
             echo ""
             echo "APIs detected:"
-            echo "${API_PROJECTS}"
+
+            script {
+                if (env.API_PROJECTS) {
+                    echo "${env.API_PROJECTS}"
+                } else {
+                    echo "No API list available."
+                }
+            }
 
             echo ""
             echo "Governance / Deployment: FAILED"
