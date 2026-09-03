@@ -1,0 +1,45 @@
+type: api
+version: v4.7.0
+data:
+  name: MvolaCustomerNewAPI
+  context: /mvola-new
+  version: 1.0.0
+  provider: admin
+  lifeCycleStatus: CREATED
+  isDefaultVersion: true
+  isRevision: false
+  revisionId: 0
+  type: HTTP
+  transport:
+  - http
+  - https
+  policies:
+  - Unlimited
+  authorizationHeader: Authorization
+  visibility: PUBLIC
+  corsConfiguration:
+    corsConfigurationEnabled: true
+    accessControlAllowOrigins:
+    - '*'
+    accessControlAllowHeaders:
+    - authorization
+    - Access-Control-Allow-Origin
+    - Content-Type
+    - SOAPAction
+    - apikey
+    - Internal-Key
+    accessControlAllowMethods:
+    - GET
+    - PUT
+    - POST
+    - DELETE
+    - PATCH
+    - OPTIONS
+  endpointConfig:
+    endpoint_type: http
+    production_endpoints:
+      url: https://localhost:8253/mvola
+    sandbox_endpoints:
+      url: https://localhost:8253/mvola
+  endpointImplementationType: ENDPOINT
+  websubSubscriptionConfiguration: null
