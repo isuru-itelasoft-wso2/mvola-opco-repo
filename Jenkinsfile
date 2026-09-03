@@ -3,7 +3,7 @@ pipeline {
     agent any
 
     environment {
-        APIM_ENV = "tigo"
+        APIM_ENV = "mvola"
         APICTL_HOME = "/opt/wso2/apictl"
         PATH = "/opt/wso2/apictl:${env.PATH}"
     }

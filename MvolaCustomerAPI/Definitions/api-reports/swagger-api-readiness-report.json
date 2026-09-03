@@ -1,0 +1,384 @@
+{
+  "meta": {
+    "specFile": "/Users/isuru/Projects/iTelaSoft/axian-poc/mvola-opco-repo/MvolaCustomerAPI/Definitions/swagger.yaml",
+    "assessedAt": "2026-09-03T13:41:52.111Z",
+    "guidelinesVersion": "agent-readiness-guidelines.md",
+    "model": "copilot",
+    "specHash": "4dbd055717bdd8cafd018ed8ce737d5af05e91d5518fc4f1272100f4448b4b84"
+  },
+  "agentReadiness": {
+    "spectral": {
+      "status": "completed",
+      "ruleset": "references/agent-readiness-spectral/ai-readiness.yaml",
+      "score": {
+        "critical": 3,
+        "high": 9,
+        "medium": 0,
+        "low": 0,
+        "rating": "Poor"
+      },
+      "issues": [
+        {
+          "id": "spec-001",
+          "severity": "HIGH",
+          "rule": "ai-readiness-no-interactive-auth",
+          "path": "components.securitySchemes.default",
+          "issue": "Security scheme 'default' uses an interactive OAuth flow (implicit/authorizationCode) — AI agents cannot complete browser-based authentication",
+          "description": "Security schemes must not use interactive OAuth flows",
+          "fixSuggestion": "Prefer client credentials, API keys, or pre-provisioned tokens; document how non-interactive clients obtain credentials.",
+          "autoFixable": true
+        },
+        {
+          "id": "spec-002",
+          "severity": "HIGH",
+          "rule": "ai-readiness-api-description",
+          "path": "info",
+          "issue": "API description must be present and at least 50 characters for AI readiness",
+          "description": "API must have a comprehensive description for AI understanding",
+          "fixSuggestion": "Expand `info.description` to at least 50 characters: scope, main resources, auth model, and links to external docs or portals.",
+          "autoFixable": true
+        },
+        {
+          "id": "spec-003",
+          "severity": "HIGH",
+          "rule": "ai-readiness-path-item-summary",
+          "path": "paths./customers",
+          "issue": "Path item should include a summary for better AI route understanding",
+          "description": "Path items should have summaries to provide route-level context",
+          "fixSuggestion": "Set `summary` on the path item to describe the resource or route group before drilling into per-method details.",
+          "autoFixable": true
+        },
+        {
+          "id": "spec-004",
+          "severity": "HIGH",
+          "rule": "ai-readiness-list-pagination-params",
+          "path": "paths./customers.get",
+          "issue": "GET operation should declare pagination parameters (cursor/page and limit) for AI agent iteration over large result sets",
+          "description": "GET operations should support standard pagination parameters",
+          "fixSuggestion": "Add query parameters such as `limit` plus `cursor` or `page` (and document defaults and max) on list-style GETs.",
+          "autoFixable": true
+        },
+        {
+          "id": "spec-005",
+          "severity": "HIGH",
+          "rule": "ai-readiness-operation-description",
+          "path": "paths./customers.get",
+          "issue": "Operation 'get' description must be present and at least 30 characters for AI readiness",
+          "description": "All operations must have a detailed description",
+          "fixSuggestion": "Write at least 30 characters in `description`: inputs, outcomes, idempotency, and notable errors or side effects.",
+          "autoFixable": true
+        },
+        {
+          "id": "spec-006",
+          "severity": "CRITICAL",
+          "rule": "ai-readiness-operation-id",
+          "path": "paths./customers.get",
+          "issue": "Operation must have an operationId for AI readiness",
+          "description": "All operations must have an operationId for AI reference",
+          "fixSuggestion": "Set a unique `operationId` per operation for stable cross-references in code generators and agent prompts.",
+          "autoFixable": true
+        },
+        {
+          "id": "spec-007",
+          "severity": "CRITICAL",
+          "rule": "ai-readiness-operation-summary",
+          "path": "paths./customers.get",
+          "issue": "Operation 'get' must have a summary for AI readiness",
+          "description": "All operations must have a summary for AI understanding",
+          "fixSuggestion": "Add a one-line `summary` for each operation (what it does, not how it is implemented) for list views and AI summarization.",
+          "autoFixable": true
+        },
+        {
+          "id": "spec-008",
+          "severity": "HIGH",
+          "rule": "ai-readiness-operation-tags",
+          "path": "paths./customers.get",
+          "issue": "Operation should have at least one tag for AI categorization",
+          "description": "All operations should have tags for AI categorization",
+          "fixSuggestion": "Add `tags` that reference your global `tags` list so operations group correctly in docs and AI context windows.",
+          "autoFixable": true
+        },
+        {
+          "id": "spec-009",
+          "severity": "HIGH",
+          "rule": "ai-readiness-error-responses-4xx",
+          "path": "paths./customers.get.responses",
+          "issue": "Operation must define at least one 4xx error response for AI error handling",
+          "description": "Operations must define 4xx error responses",
+          "fixSuggestion": "Document the client and auth failure cases you support (e.g. 400, 401, 403, 404, 422, 429) with bodies agents can parse.",
+          "autoFixable": true
+        },
+        {
+          "id": "spec-010",
+          "severity": "HIGH",
+          "rule": "ai-readiness-error-responses-5xx",
+          "path": "paths./customers.get.responses",
+          "issue": "Operation should define at least one 5xx error response for AI error handling",
+          "description": "Operations should define 5xx error responses",
+          "fixSuggestion": "Add a `500` (or `502`/`503`/`504` as appropriate) response with a schema for generic or upstream failures.",
+          "autoFixable": true
+        },
+        {
+          "id": "spec-011",
+          "severity": "CRITICAL",
+          "rule": "ai-readiness-response-description",
+          "path": "paths./customers.get.responses.200",
+          "issue": "Response '200' description must be present and at least 20 characters for AI readiness",
+          "description": "All responses must have meaningful descriptions",
+          "fixSuggestion": "Add a `description` (≥20 chars) to each response code explaining when it is returned, what the body represents, and what the client should do.",
+          "autoFixable": true
+        },
+        {
+          "id": "spec-012",
+          "severity": "HIGH",
+          "rule": "ai-readiness-success-response-content",
+          "path": "paths./customers.get.responses.200",
+          "issue": "2xx response '[200].content' must define response content so AI agents can reliably parse success payloads",
+          "description": "All success responses must define structured payload content",
+          "fixSuggestion": "For each 2xx response, add `content` with a media type and body schema (or empty object schema for 204 if applicable).",
+          "autoFixable": true
+        }
+      ]
+    }
+  },
+  "securityReadiness": {
+    "spectral": {
+      "status": "completed",
+      "ruleset": "references/owasp-top-10-raw.yaml",
+      "score": {
+        "critical": 2,
+        "high": 7,
+        "medium": 0,
+        "low": 0,
+        "rating": "Fair"
+      },
+      "issues": [
+        {
+          "id": "spec-001",
+          "severity": "CRITICAL",
+          "rule": "owasp:api2:2023-jwt-best-practices",
+          "path": "components.securitySchemes.default",
+          "issue": "Security schemes using JWTs must explicitly declare support for RFC8725 in the description.",
+          "description": "JSON Web Tokens RFC7519 is a compact, URL-safe, means of representing claims to be transferred between two parties. JWT can be enclosed in encrypted or signed tokens like JWS and JWE.\n\nThe [JOSE IANA registry](https://www.iana.org/assignments/jose/jose.xhtml) provides algorithms information.\n\nRFC8725 describes common pitfalls in the JWx specifications and in\ntheir implementations, such as:\n- the ability to ignore algorithms, eg. `{\"alg\": \"none\"}`;\n- using insecure algorithms like `RSASSA-PKCS1-v1_5` eg. `{\"alg\": \"RS256\"}`.\nAn API using JWT should explicit in the `description`\nthat the implementation conforms to RFC8725.\n```\ncomponents:\n  securitySchemes:\n    JWTBearer:\n      type: http\n      scheme: bearer\n      bearerFormat: JWT\n      description: |-\n        A bearer token in the format of a JWS and conformato\n        to the specifications included in RFC8725.\n```",
+          "fixSuggestion": "On each affected OAuth2 or JWT bearer `securitySchemes` entry, set a non-empty `description` that explicitly states conformance to RFC 8725 (e.g. algorithm allowlists, signature validation, and rejection of \"none\" / weak algorithms).",
+          "autoFixable": true
+        },
+        {
+          "id": "spec-002",
+          "severity": "HIGH",
+          "rule": "owasp:api4:2023-rate-limit-responses-429",
+          "path": "paths./customers.get.responses",
+          "issue": "Operation is missing rate limiting response in responses[429].",
+          "description": "OWASP API Security recommends defining schemas for all responses, even errors. A HTTP 429 response signals the API client is making too many requests, and will supply information about when to retry so that the client can back off calmly without everything breaking. Defining this response is important not just for documentation, but to empower contract testing to make sure the proper JSON structure is being returned instead of leaking implementation details in backtraces. It also ensures your API/framework/gateway actually has rate limiting set up.",
+          "fixSuggestion": "For each operation under `paths`, add a `429` response with a `content` entry (e.g. `application/json`) and a schema describing the rate-limit / retry body. Document retry semantics and reference gateway rate limits so clients and tests can rely on a stable contract.",
+          "autoFixable": true
+        },
+        {
+          "id": "spec-003",
+          "severity": "HIGH",
+          "rule": "owasp:api4:2023-rate-limit-responses-429",
+          "path": "paths./customers.get.responses",
+          "issue": "Operation is missing rate limiting response in responses[429].content.",
+          "description": "OWASP API Security recommends defining schemas for all responses, even errors. A HTTP 429 response signals the API client is making too many requests, and will supply information about when to retry so that the client can back off calmly without everything breaking. Defining this response is important not just for documentation, but to empower contract testing to make sure the proper JSON structure is being returned instead of leaking implementation details in backtraces. It also ensures your API/framework/gateway actually has rate limiting set up.",
+          "fixSuggestion": "For each operation under `paths`, add a `429` response with a `content` entry (e.g. `application/json`) and a schema describing the rate-limit / retry body. Document retry semantics and reference gateway rate limits so clients and tests can rely on a stable contract.",
+          "autoFixable": true
+        },
+        {
+          "id": "spec-004",
+          "severity": "HIGH",
+          "rule": "owasp:api8:2023-define-error-responses-401",
+          "path": "paths./customers.get.responses",
+          "issue": "Operation is missing responses[401].",
+          "description": "OWASP API Security recommends defining schemas for all responses, even errors. The 401 describes what happens when a request is unauthorized, so its important to define this not just for documentation, but to empower contract testing to make sure the proper JSON structure is being returned instead of leaking implementation details in backtraces.",
+          "fixSuggestion": "Add a `401` response to each protected operation, including `content` (e.g. `application/json`) and a schema for the unauthorized error body, matching what your API actually returns.",
+          "autoFixable": true
+        },
+        {
+          "id": "spec-005",
+          "severity": "HIGH",
+          "rule": "owasp:api8:2023-define-error-responses-401",
+          "path": "paths./customers.get.responses",
+          "issue": "Operation is missing responses[401].content.",
+          "description": "OWASP API Security recommends defining schemas for all responses, even errors. The 401 describes what happens when a request is unauthorized, so its important to define this not just for documentation, but to empower contract testing to make sure the proper JSON structure is being returned instead of leaking implementation details in backtraces.",
+          "fixSuggestion": "Add a `401` response to each protected operation, including `content` (e.g. `application/json`) and a schema for the unauthorized error body, matching what your API actually returns.",
+          "autoFixable": true
+        },
+        {
+          "id": "spec-006",
+          "severity": "HIGH",
+          "rule": "owasp:api8:2023-define-error-responses-500",
+          "path": "paths./customers.get.responses",
+          "issue": "Operation is missing responses[500].",
+          "description": "OWASP API Security recommends defining schemas for all responses, even errors. The 500 describes what happens when a request fails with an internal server error, so its important to define this not just for documentation, but to empower contract testing to make sure the proper JSON structure is being returned instead of leaking implementation details in backtraces.",
+          "fixSuggestion": "Add a `500` response on each operation with `content` and a schema for a generic server-error payload (avoid stack traces); reuse a shared component if all operations return the same error shape.",
+          "autoFixable": true
+        },
+        {
+          "id": "spec-007",
+          "severity": "HIGH",
+          "rule": "owasp:api8:2023-define-error-responses-500",
+          "path": "paths./customers.get.responses",
+          "issue": "Operation is missing responses[500].content.",
+          "description": "OWASP API Security recommends defining schemas for all responses, even errors. The 500 describes what happens when a request fails with an internal server error, so its important to define this not just for documentation, but to empower contract testing to make sure the proper JSON structure is being returned instead of leaking implementation details in backtraces.",
+          "fixSuggestion": "Add a `500` response on each operation with `content` and a schema for a generic server-error payload (avoid stack traces); reuse a shared component if all operations return the same error shape.",
+          "autoFixable": true
+        },
+        {
+          "id": "spec-008",
+          "severity": "HIGH",
+          "rule": "owasp:api8:2023-define-error-validation",
+          "path": "paths./customers.get.responses",
+          "issue": "Missing error response of either 400, 422 or 4XX.",
+          "description": "Carefully define schemas for all the API responses, including either 400, 422 or 4XX responses which describe errors caused by invalid requests.",
+          "fixSuggestion": "For each operation, document at least one client-error response: `400` or `422` with a body schema, or a shared `4XX` response, so validation failures are part of the contract and testable.",
+          "autoFixable": true
+        },
+        {
+          "id": "spec-009",
+          "severity": "CRITICAL",
+          "rule": "owasp:api9:2023-inventory-access",
+          "path": "servers.0",
+          "issue": "Declare intended audience of every server by defining servers[0].x-internal as true/false.",
+          "description": "Servers are required to use vendor extension x-internal set to true or false to explicitly explain the audience for the API, which will be picked up by most documentation tools.",
+          "fixSuggestion": "On every entry in `servers`, add `x-internal: true` (intranet-only, partners, VPN) or `x-internal: false` (public or external-facing) so tools and consumers know the intended audience.",
+          "autoFixable": true
+        }
+      ]
+    }
+  },
+  "restApiReadiness": {
+    "spectral": {
+      "status": "completed",
+      "ruleset": "references/wso2_rest_api_design_guidelines.yaml",
+      "score": {
+        "critical": 6,
+        "high": 6,
+        "medium": 0,
+        "low": 0,
+        "rating": "Poor"
+      },
+      "issues": [
+        {
+          "id": "spec-001",
+          "severity": "HIGH",
+          "rule": "api-classification-required",
+          "path": "",
+          "issue": "x-api-classification is required.",
+          "description": "API classification must be defined.",
+          "fixSuggestion": "Review and update the API specification to address this issue.",
+          "autoFixable": true
+        },
+        {
+          "id": "spec-002",
+          "severity": "CRITICAL",
+          "rule": "api-domain-required",
+          "path": "",
+          "issue": "x-api-domain is required.",
+          "description": "API domain must be defined.",
+          "fixSuggestion": "Review and update the API specification to address this issue.",
+          "autoFixable": true
+        },
+        {
+          "id": "spec-003",
+          "severity": "CRITICAL",
+          "rule": "authorization-header-required",
+          "path": "",
+          "issue": "authorizationHeader must be defined.",
+          "description": "Authorization header configuration must be defined.",
+          "fixSuggestion": "Review and update the API specification to address this issue.",
+          "autoFixable": true
+        },
+        {
+          "id": "spec-004",
+          "severity": "CRITICAL",
+          "rule": "opco-required",
+          "path": "",
+          "issue": "x-opco is required.",
+          "description": "API must identify the owning OpCo.",
+          "fixSuggestion": "Review and update the API specification to address this issue.",
+          "autoFixable": true
+        },
+        {
+          "id": "spec-005",
+          "severity": "CRITICAL",
+          "rule": "oauth2-security-scheme-required",
+          "path": "components.securitySchemes",
+          "issue": "OAuth2 security scheme is required.",
+          "description": "APIs must define an OAuth2 security scheme.",
+          "fixSuggestion": "Review and update the API specification to address this issue.",
+          "autoFixable": true
+        },
+        {
+          "id": "spec-006",
+          "severity": "CRITICAL",
+          "rule": "api-description-required",
+          "path": "info",
+          "issue": "API description is required.",
+          "description": "Every API must have a description.",
+          "fixSuggestion": "Review and update the API specification to address this issue.",
+          "autoFixable": true
+        },
+        {
+          "id": "spec-007",
+          "severity": "HIGH",
+          "rule": "info-contact",
+          "path": "info",
+          "issue": "Info object must have \"contact\" object.",
+          "description": "Info object must have \"contact\" object.",
+          "fixSuggestion": "Review and update the API specification to address this issue.",
+          "autoFixable": true
+        },
+        {
+          "id": "spec-008",
+          "severity": "HIGH",
+          "rule": "info-description",
+          "path": "info",
+          "issue": "Info \"description\" must be present and non-empty string.",
+          "description": "Info \"description\" must be present and non-empty string.",
+          "fixSuggestion": "Review and update the API specification to address this issue.",
+          "autoFixable": true
+        },
+        {
+          "id": "spec-009",
+          "severity": "CRITICAL",
+          "rule": "api-title-format",
+          "path": "info.title",
+          "issue": "API title must follow <OPCO>-<Domain>-API.",
+          "description": "API title must follow the OpCo API naming convention.",
+          "fixSuggestion": "Review and update the API specification to address this issue.",
+          "autoFixable": true
+        },
+        {
+          "id": "spec-010",
+          "severity": "HIGH",
+          "rule": "operation-description",
+          "path": "paths./customers.get",
+          "issue": "Operation \"description\" must be present and non-empty string.",
+          "description": "Operation \"description\" must be present and non-empty string.",
+          "fixSuggestion": "Review and update the API specification to address this issue.",
+          "autoFixable": true
+        },
+        {
+          "id": "spec-011",
+          "severity": "HIGH",
+          "rule": "operation-operationId",
+          "path": "paths./customers.get",
+          "issue": "Operation must have \"operationId\".",
+          "description": "Operation must have \"operationId\".",
+          "fixSuggestion": "Review and update the API specification to address this issue.",
+          "autoFixable": true
+        },
+        {
+          "id": "spec-012",
+          "severity": "HIGH",
+          "rule": "operation-tags",
+          "path": "paths./customers.get",
+          "issue": "Operation must have non-empty \"tags\" array.",
+          "description": "Operation must have non-empty \"tags\" array.",
+          "fixSuggestion": "Review and update the API specification to address this issue.",
+          "autoFixable": true
+        }
+      ]
+    }
+  }
+}
