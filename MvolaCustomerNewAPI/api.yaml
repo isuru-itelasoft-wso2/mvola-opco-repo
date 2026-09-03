@@ -17,6 +17,13 @@ data:
   - Unlimited
   authorizationHeader: Authorization
   visibility: PUBLIC
+  advertiseInfo:
+    advertised: false
+    apiOwner: admin
+    vendor: WSO2
+  securityScheme:
+   - oauth_basic_auth_api_key_mandatory
+   - oauth2
   corsConfiguration:
     corsConfigurationEnabled: true
     accessControlAllowOrigins:
